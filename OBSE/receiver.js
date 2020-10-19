@@ -26,8 +26,7 @@ setTimeout(() => {
                         throw queue_error;
                     }
 
-                    channel.bindQueue(queue.queue, exchange, "my.i");
-                    channel.bindQueue(queue.queue, exchange, "my.o");
+                    channel.bindQueue(queue.queue, exchange, "#");
                     channel.consume(queue.queue, (message) => {
                         const date = new Date();
                         const text = date.toISOString() + " Topic " + message.fields.routingKey
