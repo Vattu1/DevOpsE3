@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+  observer:
+    depends_on:
+      - rabbit
+    build: ./OBSE
+    volumes:
+      - httpserver_volume:/data
+  intermediate:
+    build: ./IMED
+    depends_on:
+      - rabbit
+  original:
+    build: ./ORIG
+    depends_on:
+      - rabbit
+  httpserv:
+    build: ./HTTPSERV
+    ports:
+      - 8080:8080
+    volumes:
+      - httpserver_volume:/data
+
+volumes:
+  httpserver_volume:

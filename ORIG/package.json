@@ -1,0 +1,9 @@
+{
+    "name": "ORIG",
+    "version": "1.0.0",
+    "license": "ISC",
+    "description": "original",
+    "dependencies": {
+        "amqplib": "^0.6.0"
+    }
+}
